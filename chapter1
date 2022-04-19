@@ -1,0 +1,229 @@
+Chap 1 運算式、變數與資料型別
+註解
+a=3  #單行註解
+b=5
+print(a+b)
+8
+'''
+多行註解
+多行註解
+多行註解
+'''
+a=3
+b=5
+print(a+b)
+8
+運算式
+#變數交換
+x=1
+y=10
+
+z=x
+x=y
+y=z
+print(x)
+print(y)
+10
+1
+x=1
+y=10
+
+x=x+y
+y=x-y
+x=x-y
+print(x)
+print(y)
+10
+1
+#python版本的變數交換
+x=1
+y=10
+x,y = y,x
+print(x)
+print(y)
+10
+1
+變數
+變數的平行設定
+x, y, z= 3, 4, 5
+print(x)
+print(y)
+print(z)
+3
+4
+5
+x, y, z = 3, 4, 5
+x += 1 #x=x+1
+y *= 2 #y=y*2
+z **= 3 #z^3
+print(x, y, z)
+4 8 125
+變數的應用
+Q：邊長為3, 4, 5的三角形，其面積大小為何?
+海龍公式：
+s=(a+b+c)/2
+sqrt(s(s-a)(s-b)(s-c))
+
+import math
+a,b,c=3,4,5
+s=(a+b+c)/2
+d=math.sqrt(s*(s-a)*(s-b)*(s-c))
+print(d)
+6.0
+Q：半徑為10的圓形，其面積大小為何?
+
+import math
+r=10
+print(r*r*math.pi)
+314.1592653589793
+資料型別
+python屬於動態類型變數，使用前不需要宣告資料型態
+
+x=254
+print(type(x))
+y=254.0
+print(type(y))
+z='write'
+print(type(z))
+print(type(x==y))
+<class 'int'>
+<class 'float'>
+<class 'str'>
+<class 'bool'>
+算術符號
+x=10
+y=3
+print(x/y)  #除法
+print(x//y) #求商
+print(x%y)  #求餘數
+3.3333333333333335
+3
+1
+注意數字的正確性
+x=3.141592627
+print(x-3.14) #比正確值略小
+0.0015926269999999576
+算術符號的順序
+()括號 > *次方 > / 乘除 > +-加減
+
+x=(5*(1+2)**2-3+4/2)
+print(x)
+44.0
+關係比較
+print(10==10)
+x, y = 10, 20
+print(x==y)  # == 關係比較
+x=y          # =  指派值
+print(x)
+True
+False
+20
+關係運算，以閏年為例
+y=2010
+print(y%4==0 and y%100!=0 or y%400==0)
+y=2012
+print(y%4==0 and y%100!=0 or y%400==0)
+y=1900
+print(y%4==0 and y%100!=0 or y%400==0)
+y=2000
+print(y%4==0 and y%100!=0 or y%400==0)
+False
+True
+False
+True
+型態轉換
+#小心不同型態之間所得到的結果跟想像不同
+x="must"
+print(10*x)
+print("10"+x)
+print(10,x)
+mustmustmustmustmustmustmustmustmustmust
+10must
+10 must
+x=12
+print(type(x))
+y=float(x)+0.5 #強制型別轉換
+print(type(y))
+print(int("123"))
+print(int(123.33))
+print(int(float("123.33")))
+<class 'int'>
+<class 'float'>
+123
+123
+123
+#字串的型別轉換
+x=10*3.25  #x=32.5
+y=200*200  #y=40000
+s="The value of x is " + str(x) + ' and y is ' + str(y)
+print(s)
+print("The value of x is", x,"and y is", y)
+print("The value of x is {} and y is {}".format(x,y))
+The value of x is 32.5 and y is 40000
+The value of x is 32.5 and y is 40000
+The value of x is 32.5 and y is 40000
+非內建模組
+import math
+print(math.pi)
+print(math.pow(2,3))
+print(8.3*10.58*math.sin(37.0/180*math.pi)/2)
+print(math.sqrt(25))
+3.141592653589793
+8.0
+26.423892221536985
+5.0
+範例：算圓面積
+import math
+r=input("請輸入圓的半徑：")
+area=float(r)*float(r)*math.pi
+print("圓面積為：",area)
+請輸入圓的半徑：10
+圓面積為 314.1592653589793
+應用題：算矩形面積
+r=input("請輸入矩形的長：")
+w=input("請輸入矩形的寬：")
+area=float(r)*float(w)
+print("矩形面積為：",area)
+請輸入矩形的長：10
+請輸入矩形的寬：5
+矩形面積為： 50.0
+eval()函數
+eval會把str型態的表示式，轉換成數學式進行計算
+
+print(eval("3+5"))
+id=input("請輸入產品編號：")
+print(type(id))
+print(type(eval(id)))
+8
+請輸入產品編號：3
+<class 'str'>
+<class 'int'>
+print的三種方式
+透過,區隔要列印的變數 eg: print("This", "is", "a", "book")
+利用字串的str.format() (新式)
+%格式化输出字符串 (舊式)
+print("This", "is", "a", "book")
+print("This"+"is"+"a"+"book")
+This is a book
+Thisisabook
+利用字串的str.format()，在{ }中替代變數的位置
+eg: print("This {} a book".format("is"))
+{}中可以設定格式
+例如：{0:10} (10個空格，靠左對齊)
+例如：{:,2f} (三個數字用,分隔，小數點後2位數)
+print("This {} a book".format("is"))
+x=123456.7890
+print("{:.2f}".format(x))  #小數點.後兩位
+print("{:,.2f}".format(x)) #,小數點前用,分開
+This is a book
+123456.79
+123,456.79
+C語言類似的 % 格式
+%s (字串) %d (整數) %f (浮點數)
+%s(字串): %10s (10格靠右對齊，不足的左方補空白), %-10s
+%f(浮點數): %7.3f (總共7個浮點數位數，含一個小數點，以及三個小數點後數字)
+print("This %-10s a %10s" % ("is", "book")) #字串占10格，靠右2格
+print("%7.3f" % 6789.4333)
+This is         a       book
+6789.433
+ 
