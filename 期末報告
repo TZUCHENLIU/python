@@ -1,0 +1,438 @@
+Python物件
+
+List[串列] Tuple(元組) Dictionary{字典} Sets{集合}
+List[串列]
+
+使用中括號[]包裹元素
+
+In [ ]:
+expenses = [1138, 101, 12, 300, 2049]
+print(sum(expenses)) #用sum全部加起來
+3600
+索引
+In [ ]:
+expenses = [1138, 101, 12, 300, 2049]
+print(expenses[0]) #索引從0開始
+print(expenses[1])
+print(expenses[-1]) #倒數第一個
+print(expenses[-2])
+1138
+101
+2049
+300
+In [ ]:
+my_list0 = [] #空串列
+my_list1 = list() 
+my_list2 = ['python', 'javascript', 'C#']
+print(my_list2[0]) #顯示my_list2的第0位資料
+python
+list的長度
+In [ ]:
+my_list2 = ['python', 'javascript', 'C#']
+print(len(my_list2)) #顯示list有多少
+print(len(my_list2[0])) #顯示0號位有幾個字元數
+3
+6
+附加
+In [ ]:
+my_list2 = ['python', 'javascript', 'C#']
+my_list2.append('java') #將資料添加到串列尾部
+print(my_list2)
+['python', 'javascript', 'C#', 'java']
+In [ ]:
+my_list2 = ['python', 'javascript', 'C#']
+my_list2.insert(1,'java') #將資料添加到1號位
+print(my_list2)
+['python', 'java', 'javascript', 'C#']
+刪除
+In [ ]:
+my_list2 = ['python', 'javascript', 'C#']
+my_list2.remove('python') #移除指定元素
+print(my_list2)
+del my_list2[-1] #刪除指定位置的元素
+print(my_list2)
+my_list2.clear() #清除全部
+print(my_list2)
+['javascript', 'C#']
+['javascript']
+[]
+In [ ]:
+a=[1,2]
+print(a*5)
+[1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+list取值
+In [ ]:
+a=[1,2,3,4,5,6,7,8,9]
+b=a[0:3] #範圍取值，0,1,2不包含3
+print(b)
+c=a[0:9:2] #間隔2取值
+print(c)
+d = a[0:] #從0位開始取到最後
+print(d)
+e = a[:9] #取到9號位
+print(e)
+f = a[:] #取全部值
+print(f)
+[1, 2, 3]
+[1, 3, 5, 7, 9]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+In [ ]:
+a=[1,2,3,4,5,6,7,8,9]
+del a[7:9] #刪除某範圍值, 7, 8
+print(a)
+print(min(a)) #最小值
+print(max(a)) #最大值
+print(a.index(1)) #找出1所在的第一個索引值
+b=[1,0,0,1,1,1]
+print(b.count(1)) #1出現的次數
+a.reverse() #串列反轉
+print(a)
+a.sort() #串列由小到大排序,a的值會被改變
+print(a)
+[1, 2, 3, 4, 5, 6, 7]
+1
+7
+0
+4
+[7, 6, 5, 4, 3, 2, 1]
+[1, 2, 3, 4, 5, 6, 7]
+In [ ]:
+expenses = [1138, 101, 12, 300, 2049]
+s=sorted(expenses) #expenses的值不會變 #將expenses排序
+print(s, expenses)
+[12, 101, 300, 1138, 2049] [1138, 101, 12, 300, 2049]
+Tuple (元組)
+
+tuple(元組)可視為不可改變的串列，tuple跟list很像，但是我們不能新增、刪除或更新tuple的元素。tuple的好處有：
+
+佔用較少空間
+可當作dictionary(字典)的鍵值
+可當作函式引數
+In [ ]:
+a_tuple=('python', 'js', 'SQL')
+print(a_tuple)
+b_list=['go', 'c#', 'vb']
+b_tuple=tuple(b_list)
+print(b_tuple)
+print(b_tuple[0])
+('python', 'js', 'SQL')
+('go', 'c#', 'vb')
+go
+字典(dictionary - dict)為帶有鍵值(key)的串列(list)
+In [ ]:
+languages = {}
+languages = {'name':'python', 'version':'3.7'} #索引值(鍵值)可以自訂
+print(languages['name'])
+print(languages['version'])
+a={0:'python', 1:'java', 2:'SQL'}
+print(a[0])
+print(a[1])
+print(a[2])
+print(languages)
+print(languages.keys())
+print(languages.values())
+print(languages.items())
+print('name' in languages)
+python
+3.7
+python
+java
+SQL
+{'name': 'python', 'version': '3.7'}
+dict_keys(['name', 'version'])
+dict_values(['python', '3.7'])
+dict_items([('name', 'python'), ('version', '3.7')])
+True
+Chap.4 numpy套件(numeric python)
+
+為什麼需要numpy?
+
+numpy由c撰寫，速度快python 10~1000倍以上
+numpy儲存結果較正確，python數字儲存不正確
+numpy節省記憶體儲存空間
+numpy的向量(矩陣計算)速度快
+numpy的取值方便
+In [ ]:
+a_list=[1,2,3,4,5]
+print(a_list*3) #資料複製三次
+[1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+In [ ]:
+#numpy套件的ndarray型態,提供element-wise的操作
+import numpy as np
+a=np.array([1,2,3,4,5])
+print(a*3) #數值複製三次
+[ 3  6  9 12 15]
+In [ ]:
+a=np.array([1,2,3,4,5])
+print(type(a))
+print(a.shape) #ndaary的形狀
+print(a.dtype) #資料的型態
+print(a.ndim) #維度
+<class 'numpy.ndarray'>
+(5,)
+int64
+1
+In [9]:
+import numpy as np
+z=np.zeros(6) #用零填充6個串列
+print(z) 
+print(np.empty((2,3,4))) #產生高2橫4的亂數三次
+print(np.arange(10)) #產生0到9號位的數
+[0. 0. 0. 0. 0. 0.]
+[[[1.38640038e-316 6.76869935e-322 0.00000000e+000 0.00000000e+000]
+  [0.00000000e+000 5.30276956e+180 6.00736842e-067 3.45944511e+097]
+  [3.06308774e-057 3.25122094e+126 4.25223142e+180 7.48543529e+247]]
+
+ [[2.32363010e+251 6.11130817e+223 2.59903818e-144 1.13105613e-042]
+  [2.10653305e-052 5.28328686e-091 9.85296710e+165 2.59027903e-144]
+  [1.16442250e-028 9.44872517e-143 6.17582057e-322 0.00000000e+000]]]
+[0 1 2 3 4 5 6 7 8 9]
+ndarray的進階操作
+In [10]:
+my_array=np.arange(10)
+print(my_array)
+print(my_array[0])
+print(my_array[0:5]) #顯示0到5的資料
+[0 1 2 3 4 5 6 7 8 9]
+0
+[0 1 2 3 4]
+2維資料取值
+In [13]:
+my_2d_array=np.array([np.arange(0,5),np.arange(5,10)])
+print(my_2d_array)
+print(my_2d_array[1,:])#取第1串的資料
+print(my_2d_array[:,1])#取所有串的第1位資料
+print(my_2d_array[1,1])#取第一串第一位資料
+[[0 1 2 3 4]
+ [5 6 7 8 9]]
+[5 6 7 8 9]
+[1 6]
+6
+In [14]:
+my_array=np.arange(0,10)
+print(my_array)
+print(my_array.shape)
+my_2d_array=my_array.reshape(2,5)
+print(my_2d_array)
+print((np.arange(0,100).reshape(10,10)))
+[0 1 2 3 4 5 6 7 8 9]
+(10,)
+[[0 1 2 3 4]
+ [5 6 7 8 9]]
+[[ 0  1  2  3  4  5  6  7  8  9]
+ [10 11 12 13 14 15 16 17 18 19]
+ [20 21 22 23 24 25 26 27 28 29]
+ [30 31 32 33 34 35 36 37 38 39]
+ [40 41 42 43 44 45 46 47 48 49]
+ [50 51 52 53 54 55 56 57 58 59]
+ [60 61 62 63 64 65 66 67 68 69]
+ [70 71 72 73 74 75 76 77 78 79]
+ [80 81 82 83 84 85 86 87 88 89]
+ [90 91 92 93 94 95 96 97 98 99]]
+numpy的空值nan
+In [11]:
+b=np.array([56, 8, 19, 14, np.nan])
+print(b)
+[56.  8. 19. 14. nan]
+函式(數)
+傳統的寫法
+In [ ]:
+import math
+radius = eval(input("請輸入圓的半徑：")) #把輸入的字串變成數學計算型態
+print("圓的面積為：", radius * radius * math.pi) #math.pi為圓周率
+請輸入圓的半徑：3
+圓的面積為： 28.274333882308138
+面積計算函式
+In [ ]:
+import math
+def circle_area(radius): #建立函式
+    area = radius * radius * math.pi
+    return area
+
+print(circle_area(3)) #把輸入的拿進函式計算
+28.274333882308138
+Chap6
+
+os套件：用來處理文件與目錄，與檔案相關操作
+
+In [19]:
+import os
+print(os.getcwd()) #顯示目前所在的工作目錄
+/content
+In [16]:
+#顯示目錄下的檔案
+os.listdir(".")
+Out[16]:
+['.config', 'sample_data']
+In [21]:
+#新增目錄
+os.makedirs("test")
+os.listdir(".")
+Out[21]:
+['.config', 'test', 'sample_data']
+In [22]:
+#移除目錄
+os.rmdir("test")
+os.listdir(".")
+Out[22]:
+['.config', 'sample_data']
+檔案處理
+
+os套件有自己的檔案處理命令，而比較常用的是python內建的open
+
+w = 可寫(預設建立檔案) 若檔案存在則會清除舊檔案
+w+ = 可寫可讀(預設建立檔案) 若檔案存在則會清除舊檔案
+r = 可讀
+r+ = 可寫可讀 但寫入資料指向開頭
+a = 可寫不能讀 寫入資料指向尾端
+a+ = 可寫可讀 寫入資料指向尾端
+b = 轉為2進位文件
+ab+ = 2進位文件的讀寫 寫入資料指向尾端
+新增檔案
+In [68]:
+a=open("a.txt","w") #新增檔案
+a.write("This is a test1")
+a.write("This is a test2\n")
+a.write("This is a test3\n")
+a.close() #關閉檔案
+檢查檔案是否存在
+In [53]:
+os.path.isfile("a.txt") #存在就顯示True 不存在就顯示False
+Out[53]:
+True
+讀取檔案
+In [54]:
+a=open("a.txt","r") #讀檔
+print(a.readline()) #讀取內容，讀到空白就換行
+print(a.readline())
+print(a.readline()) #多餘的命令，檔案只有2行
+a.close() #關閉檔案
+This is a test1This is a test2
+
+This is a test3
+
+
+In [55]:
+a=open("a.txt","r") #讀檔
+print(a.readlines())  #一次讀取多行，與a.read()命令相同
+a.close() #關閉檔案
+['This is a test1This is a test2\n', 'This is a test3\n']
+In [56]:
+#加上檔案是否存在的判斷
+if os.path.isfile("a.txt"): #判定檔案在不在
+    a=open("a.txt","r") #讀檔
+    print(a.readlines()) #一次讀取多行
+    a.close() #關閉檔案
+else:
+    print("檔案不存在")
+['This is a test1This is a test2\n', 'This is a test3\n']
+split函式
+In [57]:
+if os.path.isfile("a.txt"): #判定檔案在不在
+    a=open("a.txt","r") #讀檔
+    for line in a:
+        fields=line.split(" ") #以空白為切割欄位
+        print(fields)
+    a.close() #關閉檔案
+else:
+    print("檔案不存在")
+        
+['This', 'is', 'a', 'test1This', 'is', 'a', 'test2\n']
+['This', 'is', 'a', 'test3\n']
+附加檔案
+In [58]:
+a=open("a.txt", "a") #寫入資料到檔案尾部
+a.write("This is test4\n")
+a.close()
+In [60]:
+a=open("a.txt","r") #讀檔
+print(a.readlines())
+a.close()
+['This is a test1This is a test2\n', 'This is a test3\n', 'This is test4\n']
+比較a與r+的不同
+
+a寫在檔案的結尾
+r+寫在檔案的開頭
+In [69]:
+a=open("a.txt","r+") #寫入資料到檔案開頭
+a.write("This is a test5\n")
+a.close()
+In [70]:
+a=open("a.txt","r") #讀檔
+print(a.readlines())
+a.close()
+['This is a test5\n', 'his is a test2\n', 'This is a test3\n']
+刪除檔案
+In [71]:
+if os.path.isfile("a.txt"): #判定檔案在不在
+    os.remove("a.txt") #刪除檔案
+    print("檔案刪除成功")
+else:
+    print("找不到檔案")
+print(os.path.isfile("a.txt")) #判定檔案在不在
+檔案刪除成功
+False
+Chap7 錯誤處理
+
+try:
+except:
+else:
+finally:
+
+In [ ]:
+a=10
+b=20
+if a<b:
+    print(n) #發生錯誤
+In [73]:
+a=10
+b=20
+try: #先執行
+    if a<b:
+        print(n) #發生錯誤
+except: #發生錯誤時執行 沒發生錯誤不執行
+    print("錯誤產生")
+錯誤產生
+指定錯誤類別處理
+In [81]:
+a=10
+b=20
+try: #先執行
+    if a<b:
+        print(n)
+except NameError as e: #檢查錯誤是不是找不到指定名稱
+    print("錯誤產生, 錯誤原因：",e)
+except ZeroDivisionError: #檢查錯誤原因是不是除以0導致的
+    print("除以0錯誤")
+錯誤產生, 錯誤原因： name 'n' is not defined
+else
+
+沒有錯誤產生會執行的部分
+
+In [79]:
+a=10
+b=20
+try: #先執行
+    if a>b: #改變比較條件，讓錯誤不發生
+        print(n)
+except: #錯誤發生時執行
+    print("錯誤發生")
+else: #當沒有指定的錯誤條件被發現時執行
+    print("沒有錯誤發生時會執行的部分")
+沒有錯誤發生時會執行的部分
+In [83]:
+a=10
+b=20
+try:
+    if a>b: #改變比較條件，讓錯誤不發生
+        print(n)
+except: #錯誤發生時執行
+    print("錯誤發生")
+else: #當沒有指定的錯誤條件被發現時執行
+    print("沒有錯誤發生時會執行的部分")
+finally: #必定執行的程式
+    print("不管有沒有錯誤一定會執行的部分")
+沒有錯誤發生時會執行的部分
+不管有沒有錯誤一定會執行的部分
